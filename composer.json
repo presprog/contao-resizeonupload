@@ -1,12 +1,12 @@
 {
     "name": "presprog/contao-resizeonupload",
     "type": "contao-bundle",
-    "description": "Assign image sizes to folders and all images uploaded to this folder get resized on upload.",
+    "description": "Define image sizes per folder and automatically generate thumbnails on upload.",
     "license": "MIT",
     "authors": [
         {
             "name": "Benedict Zinke",
-            "homepage": "https://presentprogressive.de"
+            "homepage": "https://www.presentprogressive.de"
         }
     ],
     "require": {
