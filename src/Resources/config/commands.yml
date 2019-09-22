@@ -1,0 +1,8 @@
+services:
+  _defaults:
+    autoconfigure: true
+  presprog.command.generate_missing_thumbs:
+    class: 'PresProg\ContaoResizeOnUploadBundle\Command\GenerateMissingThumbnailsCommand'
+    arguments:
+      - '@contao.framework'
+      - '@PresProg\ContaoResizeOnUploadBundle\ImageResizer'

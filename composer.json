@@ -1,0 +1,36 @@
+{
+    "name": "presprog/contao-resizeonupload",
+    "type": "contao-bundle",
+    "description": "Assign image sizes to folders and all images uploaded to this folder get resized on upload.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Benedict Zinke",
+            "homepage": "https://presentprogressive.de"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "contao/core-bundle": "4.4.*",
+        "symfony/console": "^3.3"
+    },
+    "conflict": {
+        "contao/core": "*",
+        "contao/manager-plugin": "<2.0 || >=3.0"
+    },
+    "require-dev": {
+        "contao/manager-plugin": "^2.0"
+    },
+    "extra": {
+        "contao-manager-plugin": "PresProg\\ContaoResizeOnUploadBundle\\ContaoManager\\Plugin"
+    },
+    "autoload": {
+        "psr-4": {
+            "PresProg\\ContaoResizeOnUploadBundle\\": "src/"
+        }
+    },
+    "support": {
+        "issues": "https://github.com/presprog/contao-resizeonupload/issues",
+        "source": "https://github.com/presprog/contao-resizeonupload"
+    }
+}

@@ -1,0 +1,16 @@
+services:
+  _instanceof:
+    Contao\CoreBundle\Framework\FrameworkAwareInterface:
+      calls:
+        - ["setFramework", ["@contao.framework"]]
+
+    Symfony\Component\DependencyInjection\ContainerAwareInterface:
+      calls:
+        - ["setContainer", ["@service_container"]]
+  PresProg\ContaoResizeOnUploadBundle\ImageResizer:
+    arguments:
+      - '@contao.framework'
+      - '@contao.image.image_factory'
+      - '@contao.image.picture_factory'
+      - '@logger'
+      - '%contao.image.valid_extensions%'
