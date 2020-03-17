@@ -41,8 +41,6 @@ class GenerateMissingThumbnailsCommand extends ContainerAwareCommand
         $this->framework = $framework;
         $this->imageResizer = $imageResizer;
 
-        $this->framework->initialize();
-
         /** @var FilesModel $filesModel */
         $this->filesModel = $this->framework->getAdapter(FilesModel::class);
 
@@ -64,6 +62,8 @@ class GenerateMissingThumbnailsCommand extends ContainerAwareCommand
      */
     public function run(InputInterface $input, OutputInterface $output): void
     {
+        $this->framework->initialize();
+
         // Overwrite default logger to stream logs to the console
         $output->setVerbosity(OutputInterface::VERBOSITY_VERBOSE);
         $logger = new ConsoleLogger($output);

@@ -51,7 +51,6 @@ class ImageResizer
     public function __construct(ContaoFrameworkInterface $framework, ImageFactoryInterface $imageFactory, PictureFactoryInterface $pictureFactory, LoggerInterface $logger, array $validImageExtensions)
     {
         $this->framework = $framework;
-        $this->framework->initialize();
 
         $this->imageFactory = $imageFactory;
         $this->pictureFactory = $pictureFactory;
