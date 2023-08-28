@@ -1,61 +1,53 @@
-<?php
+<?php declare(strict_types=1);
+
 /**
  * @copyright: Copyright (c), Present Progressive GbR
- * @author: Benedict Zinke <bz@presentprogressive.de>
+ * @author: Benedict Massolle <bm@presentprogressive.de>
  */
-
-declare(strict_types=1);
 
 namespace PresProg\ContaoResizeOnUploadBundle\EventListener;
 
-use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
+use Contao\CoreBundle\Framework\Adapter;
+use Contao\CoreBundle\Framework\ContaoFramework;
+use Contao\CoreBundle\ServiceAnnotation\Callback;
+use Contao\CoreBundle\ServiceAnnotation\Hook;
 use Contao\FilesModel;
 use Model\Collection;
 use PresProg\ContaoResizeOnUploadBundle\ImageResizer;
 
-/**
- * Class FileUploadListener
- * @package PresProg\ContaoResizeOnUploadBundle\EventListener
- */
 class FileUploadListener
 {
-    /** @var ImageResizer */
-    private $imageResizer;
+    private ImageResizer $imageResizer;
 
-    /** @var ContaoFrameworkInterface */
-    private $framework;
+    private Adapter $filesModel;
 
-    /** @var FilesModel */
-    private $filesModel;
-
-    public function __construct(ContaoFrameworkInterface $framework, ImageResizer $imageResizer)
+    public function __construct(ContaoFramework $framework, ImageResizer $imageResizer)
     {
-        $this->framework = $framework;
         $this->imageResizer = $imageResizer;
-        $this->filesModel = $this->framework->getAdapter(FilesModel::class);
+        $this->filesModel   = $framework->getAdapter(FilesModel::class);
     }
 
     /**
      * Check upload folder or parent folders for defined image sizes and create thumbnails accordingly.
-     * @param array $arrUploaded Array of paths to uploaded files
-     * @return void
+     *
+     * @Hook("postUpload")
      */
     public function resizeOnUpload(array $arrUploaded)
     {
         // Get image sizes for folder the user uploaded files to
-        $objTargetFolder = $this->filesModel->findByPath(dirname($arrUploaded[0]));
-        $imageSizes = $this->imageResizer->getImageSizesForFolder($objTargetFolder->path);
+        $target     = $this->filesModel->findByPath(dirname($arrUploaded[0]));
+        $imageSizes = $this->imageResizer->getImageSizesForFolder($target->path);
 
         // Return early if no image sizes where found
         if (empty($imageSizes)) {
             return;
         }
 
-        /** @var Collection $objUploads */
-        $objUploads = $this->filesModel->findMultipleByPaths($arrUploaded);
+        /** @var Collection $uploads */
+        $uploads = $this->filesModel->findMultipleByPaths($arrUploaded);
 
-        foreach ($objUploads as $objUpload) {
-            $this->imageResizer->resizeImage($objUpload, $imageSizes);
+        foreach ($uploads as $upload) {
+            $this->imageResizer->resizeImage($upload, $imageSizes);
         }
     }
 }

@@ -1,11 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
-/*
- * This file is part of Contao Resize On Upload Bundle.
- *
- * (c) John Doe
- *
- * @license LGPL-3.0-or-later
+/**
+ * @copyright: Copyright (c), Present Progressive GbR
+ * @author: Benedict Massolle <bm@presentprogressive.de>
  */
 
 namespace PresProg\ContaoResizeOnUploadBundle;
@@ -14,4 +11,8 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class ContaoResizeOnUploadBundle extends Bundle
 {
+    public function getPath(): string
+    {
+        return \dirname(__DIR__);
+    }
 }

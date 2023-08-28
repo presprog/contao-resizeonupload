@@ -1,11 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
-/*
- * This file is part of Contao Resize On Upload Bundle.
- *
- * (c) John Doe
- *
- * @license LGPL-3.0-or-later
+/**
+ * @copyright: Copyright (c), Present Progressive GbR
+ * @author: Benedict Massolle <bm@presentprogressive.de>
  */
 
 namespace PresProg\ContaoResizeOnUploadBundle\DependencyInjection;
@@ -24,7 +21,7 @@ class ContaoResizeOnUploadExtension extends Extension
     {
         $loader = new YamlFileLoader(
             $container,
-            new FileLocator(__DIR__.'/../Resources/config')
+            new FileLocator(__DIR__.'/../../config')
         );
 
         $loader->load('services.yml');

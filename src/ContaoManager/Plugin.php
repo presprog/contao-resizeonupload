@@ -1,11 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
-/*
- * This file is part of Contao Resize On Upload Bundle.
- *
- * (c) John Doe
- *
- * @license LGPL-3.0-or-later
+/**
+ * @copyright: Copyright (c), Present Progressive GbR
+ * @author: Benedict Massolle <bm@presentprogressive.de>
  */
 
 namespace PresProg\ContaoResizeOnUploadBundle\ContaoManager;
@@ -21,7 +18,7 @@ class Plugin implements BundlePluginInterface
     /**
      * {@inheritdoc}
      */
-    public function getBundles(ParserInterface $parser)
+    public function getBundles(ParserInterface $parser): array
     {
         return [
             BundleConfig::create(ContaoResizeOnUploadBundle::class)
