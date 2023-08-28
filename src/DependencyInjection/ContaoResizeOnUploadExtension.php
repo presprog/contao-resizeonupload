@@ -5,7 +5,7 @@
  * @author: Benedict Massolle <bm@presentprogressive.de>
  */
 
-namespace PresProg\ResizeOnBundle\DependencyInjection;
+namespace PresProg\ResizeOnUpload\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

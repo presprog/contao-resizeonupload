@@ -5,7 +5,7 @@
  * @author: Benedict Massolle <bm@presentprogressive.de>
  */
 
-namespace PresProg\ContaoResizeOnUpload\EventListener\DataContainer;
+namespace PresProg\ResizeOnUpload\EventListener\DataContainer;
 
 use Contao\CoreBundle\DataContainer\PaletteManipulator;
 use Contao\CoreBundle\Framework\ContaoFramework;

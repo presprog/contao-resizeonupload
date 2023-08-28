@@ -1,6 +1,6 @@
 services:
 
-  PresProg\ResizeOnBundle\Command\GenerateMissingThumbnailsCommand:
+  PresProg\ResizeOnUpload\Command\GenerateMissingThumbnailsCommand:
     arguments:
       - '@contao.framework'
-      - '@PresProg\ResizeOnBundle\ImageResizer'
+      - '@PresProg\ResizeOnUpload\ImageResizer'

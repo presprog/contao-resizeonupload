@@ -1,9 +1,9 @@
 services:
 
-  PresProg\ResizeOnBundle\EventListener\FileUploadListener:
+  PresProg\ResizeOnUpload\EventListener\FileUploadListener:
     arguments:
       - '@contao.framework'
-      - '@PresProg\ResizeOnBundle\ImageResizer'
+      - '@PresProg\ResizeOnUpload\ImageResizer'
 
   PresProg\ContaoResizeOnUpload\EventListener\DataContainer\FilesContainer:
       arguments:

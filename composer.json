@@ -22,11 +22,11 @@
         "contao/manager-plugin": "^2.0"
     },
     "extra": {
-        "contao-manager-plugin": "PresProg\\ResizeOnBundle\\ContaoManager\\Plugin"
+        "contao-manager-plugin": "PresProg\\ResizeOnUpload\\ContaoManager\\Plugin"
     },
     "autoload": {
         "psr-4": {
-            "PresProg\\ContaoResizeOnUploadBundle\\": "src/"
+            "PresProg\\ResizeOnUpload\\": "src/"
         }
     },
     "support": {

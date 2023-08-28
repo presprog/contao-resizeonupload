@@ -1,6 +1,6 @@
 services:
 
-  PresProg\ResizeOnBundle\ImageResizer:
+  PresProg\ResizeOnUpload\ImageResizer:
     arguments:
       - '@contao.framework'
       - '@contao.image.image_factory'

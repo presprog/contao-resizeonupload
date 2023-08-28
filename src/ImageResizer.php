@@ -5,7 +5,7 @@
  * @author: Benedict Massolle <bm@presentprogressive.de>
  */
 
-namespace PresProg\ContaoResizeOnUploadBundle;
+namespace PresProg\ResizeOnUpload;
 
 use Contao\CoreBundle\Framework\Adapter;
 use Contao\CoreBundle\Framework\ContaoFramework;

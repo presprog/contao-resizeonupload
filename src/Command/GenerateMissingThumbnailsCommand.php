@@ -5,12 +5,12 @@
  * @author: Benedict Massolle <bm@presentprogressive.de>
  */
 
-namespace PresProg\ResizeOnBundle\Command;
+namespace PresProg\ResizeOnUpload\Command;
 
 use Contao\CoreBundle\Framework\Adapter;
 use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\FilesModel;
-use PresProg\ResizeOnBundle\ImageResizer;
+use PresProg\ResizeOnUpload\ImageResizer;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Logger\ConsoleLogger;
