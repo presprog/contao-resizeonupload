@@ -5,7 +5,7 @@
  * @author: Benedict Massolle <bm@presentprogressive.de>
  */
 
-namespace PresProg\ContaoResizeOnUploadBundle\EventListener;
+namespace PresProg\ResizeOnBundle\EventListener;
 
 use Contao\CoreBundle\Framework\Adapter;
 use Contao\CoreBundle\Framework\ContaoFramework;
@@ -13,7 +13,7 @@ use Contao\CoreBundle\ServiceAnnotation\Callback;
 use Contao\CoreBundle\ServiceAnnotation\Hook;
 use Contao\FilesModel;
 use Model\Collection;
-use PresProg\ContaoResizeOnUploadBundle\ImageResizer;
+use PresProg\ResizeOnBundle\ImageResizer;
 
 class FileUploadListener
 {

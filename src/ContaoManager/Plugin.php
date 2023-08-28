@@ -5,13 +5,13 @@
  * @author: Benedict Massolle <bm@presentprogressive.de>
  */
 
-namespace PresProg\ContaoResizeOnUploadBundle\ContaoManager;
+namespace PresProg\ResizeOnBundle\ContaoManager;
 
 use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
-use PresProg\ContaoResizeOnUploadBundle\ContaoResizeOnUploadBundle;
+use PresProg\ResizeOnBundle\ContaoResizeOnUploadBundle;
 
 class Plugin implements BundlePluginInterface
 {

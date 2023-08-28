@@ -1,11 +1,9 @@
 services:
-  _defaults:
-    autoconfigure: true
 
-  PresProg\ContaoResizeOnUploadBundle\EventListener\FileUploadListener:
+  PresProg\ResizeOnBundle\EventListener\FileUploadListener:
     arguments:
       - '@contao.framework'
-      - '@PresProg\ContaoResizeOnUploadBundle\ImageResizer'
+      - '@PresProg\ResizeOnBundle\ImageResizer'
 
   PresProg\ContaoResizeOnUpload\EventListener\DataContainer\FilesContainer:
       arguments:
