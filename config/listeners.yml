@@ -5,6 +5,6 @@ services:
       - '@contao.framework'
       - '@PresProg\ResizeOnUpload\ImageResizer'
 
-  PresProg\ContaoResizeOnUpload\EventListener\DataContainer\FilesContainer:
+  PresProg\ResizeOnUpload\EventListener\DataContainer\FilesContainer:
       arguments:
           - '@contao.framework'

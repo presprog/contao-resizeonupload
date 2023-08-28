@@ -9,7 +9,7 @@ namespace PresProg\ResizeOnUpload;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class ContaoResizeOnUploadBundle extends Bundle
+class ResizeOnUploadBundle extends Bundle
 {
     public function getPath(): string
     {

@@ -32,10 +32,15 @@ class FileUploadListener
      *
      * @Hook("postUpload")
      */
-    public function resizeOnUpload(array $arrUploaded)
+    public function resizeOnUpload(array $arrUploaded): void
     {
         // Get image sizes for folder the user uploaded files to
-        $target     = $this->filesModel->findByPath(dirname($arrUploaded[0]));
+        $target = $this->filesModel->findByPath(\dirname($arrUploaded[0]));
+
+        if (!$target) {
+            return;
+        }
+
         $imageSizes = $this->imageResizer->getImageSizesForFolder($target->path);
 
         // Return early if no image sizes where found

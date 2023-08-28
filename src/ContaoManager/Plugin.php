@@ -11,7 +11,7 @@ use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
-use PresProg\ResizeOnUpload\ContaoResizeOnUploadBundle;
+use PresProg\ResizeOnUpload\ResizeOnUploadBundle;
 
 class Plugin implements BundlePluginInterface
 {
@@ -21,7 +21,7 @@ class Plugin implements BundlePluginInterface
     public function getBundles(ParserInterface $parser): array
     {
         return [
-            BundleConfig::create(ContaoResizeOnUploadBundle::class)
+            BundleConfig::create(ResizeOnUploadBundle::class)
                 ->setLoadAfter([ContaoCoreBundle::class]),
         ];
     }
