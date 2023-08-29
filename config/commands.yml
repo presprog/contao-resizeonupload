@@ -1,9 +1,0 @@
-services:
-
-    _defaults:
-        autoconfigure: true
-
-    PresProg\ResizeOnUpload\Command\GenerateMissingThumbnailsCommand:
-        arguments:
-            - '@contao.framework'
-            - '@PresProg\ResizeOnUpload\ImageResizer'

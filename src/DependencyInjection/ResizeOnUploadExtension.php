@@ -24,8 +24,6 @@ final class ResizeOnUploadExtension extends Extension
             new FileLocator(__DIR__ . '/../../config')
         );
 
-        $loader->load('commands.yml');
-        $loader->load('listeners.yml');
         $loader->load('services.yml');
     }
 }
