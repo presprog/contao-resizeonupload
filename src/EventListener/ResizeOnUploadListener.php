@@ -14,7 +14,12 @@ use Contao\FilesModel;
 use Model\Collection;
 use PresProg\ResizeOnUpload\ImageResizer;
 
-final class FileUploadListener
+/**
+ * Check upload folder or parent folders for defined image sizes and create thumbnails accordingly.
+ *
+ * @Hook("postUpload")
+ */
+final class ResizeOnUploadListener
 {
     private ImageResizer $imageResizer;
 
@@ -26,12 +31,7 @@ final class FileUploadListener
         $this->filesModel   = $framework->getAdapter(FilesModel::class);
     }
 
-    /**
-     * Check upload folder or parent folders for defined image sizes and create thumbnails accordingly.
-     *
-     * @Hook("postUpload")
-     */
-    public function resizeOnUpload(array $arrUploaded): void
+    public function __invoke(array $arrUploaded): void
     {
         // Get image sizes for folder the user uploaded files to
         $target = $this->filesModel->findByPath(\dirname($arrUploaded[0]));

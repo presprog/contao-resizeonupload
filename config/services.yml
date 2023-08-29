@@ -10,7 +10,7 @@ services:
             - '@PresProg\ResizeOnUpload\ImageResizer'
 
     # Listeners
-    PresProg\ResizeOnUpload\EventListener\FileUploadListener:
+    PresProg\ResizeOnUpload\EventListener\ResizeOnUploadListener:
         arguments:
             - '@contao.framework'
             - '@PresProg\ResizeOnUpload\ImageResizer'
