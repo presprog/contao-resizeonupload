@@ -16,7 +16,7 @@ use Contao\Image;
 use Contao\ImageSizeModel;
 use Contao\StringUtil;
 
-class FilesContainer
+final class FilesContainer
 {
     private ContaoFramework $framework;
 
@@ -51,7 +51,7 @@ class FilesContainer
     }
 
     /**
-     * @Callback(table="tl_files", target="list.operations.image_sizes.button")
+     * @Callback(table="tl_files", target="list.operations.sizes.button")
      */
     public function imageSizeOperationIcon($row, $href, $label, $title, $icon, $attributes): string
     {
@@ -60,13 +60,13 @@ class FilesContainer
         $folder         = $filesModel->findByPath($row['id']);
 
         if ($folder === null || $folder->type !== 'folder' || $folder->sizes === null) {
-            return Image::getHtml('sizes_.svg');
+            return '';
         }
 
         $sizes = $imageSizeModel->findMultipleByIds(StringUtil::deserialize($folder->sizes));
 
         if ($sizes === null) {
-            return Image::getHtml('sizes_.svg', '', $attributes);
+            return '';
         }
 
         $sizeNames = [];

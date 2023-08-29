@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-class ResizeOnUploadExtension extends Extension
+final class ResizeOnUploadExtension extends Extension
 {
     /**
      * {@inheritdoc}
@@ -24,8 +24,8 @@ class ResizeOnUploadExtension extends Extension
             new FileLocator(__DIR__ . '/../../config')
         );
 
-        $loader->load('services.yml');
         $loader->load('commands.yml');
         $loader->load('listeners.yml');
+        $loader->load('services.yml');
     }
 }

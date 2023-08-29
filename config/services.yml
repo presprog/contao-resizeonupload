@@ -1,9 +1,10 @@
 services:
 
-  PresProg\ResizeOnUpload\ImageResizer:
-    arguments:
-      - '@contao.framework'
-      - '@contao.image.image_factory'
-      - '@contao.image.picture_factory'
-      - '@logger'
-      - '%contao.image.valid_extensions%'
+    PresProg\ResizeOnUpload\ImageResizer:
+        arguments:
+            - '@contao.framework'
+            - '@contao.image.picture_factory'
+            - '@contao.image.legacy_resizer'
+            - '@logger'
+            - '%contao.image.valid_extensions%'
+            - '%kernel.project_dir%'

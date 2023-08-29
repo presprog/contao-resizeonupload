@@ -1,36 +1,43 @@
 {
-    "name": "presprog/contao-resizeonupload",
-    "type": "contao-bundle",
-    "description": "Define image sizes per folder and automatically generate thumbnails on upload.",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Present Progressive",
-            "homepage": "https://www.presentprogressive.de"
-        }
-    ],
-    "require": {
-        "php": "^7.4 || ^8.0",
-        "contao/core-bundle": "^4.13",
-        "symfony/console": "^5.4"
+  "name": "presprog/contao-resizeonupload",
+  "type": "contao-bundle",
+  "description": "Define image sizes per folder and automatically generate thumbnails on upload or with a console command.",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Present Progressive",
+      "email": "hello@presentprogressive.de",
+      "homepage": "https://www.presentprogressive.de"
     },
-    "conflict": {
-        "contao/core": "*",
-        "contao/manager-plugin": "<2.0 || >=3.0"
-    },
-    "require-dev": {
-        "contao/manager-plugin": "^2.0"
-    },
-    "extra": {
-        "contao-manager-plugin": "PresProg\\ResizeOnUpload\\ContaoManager\\Plugin"
-    },
-    "autoload": {
-        "psr-4": {
-            "PresProg\\ResizeOnUpload\\": "src/"
-        }
-    },
-    "support": {
-        "issues": "https://github.com/presprog/contao-resizeonupload/issues",
-        "source": "https://github.com/presprog/contao-resizeonupload"
+    {
+      "name": "Benedict Massolle",
+      "email": "bm@presentprogressive.de",
+      "homepage": "https://www.presentprogressive.de"
     }
+  ],
+  "require": {
+    "php": "^7.4 || ^8.0",
+    "contao/core-bundle": "^4.13",
+    "symfony/console": "^5.4",
+    "symfony/http-kernel": "^5.4",
+    "symfony/dependency-injection": "^5.4"
+  },
+  "conflict": {
+    "contao/manager-plugin": "<2.0 || >=3.0"
+  },
+  "require-dev": {
+    "contao/manager-plugin": "^2.0"
+  },
+  "extra": {
+    "contao-manager-plugin": "PresProg\\ResizeOnUpload\\ContaoManager\\Plugin"
+  },
+  "autoload": {
+    "psr-4": {
+      "PresProg\\ResizeOnUpload\\": "src/"
+    }
+  },
+  "support": {
+    "issues": "https://github.com/presprog/contao-resizeonupload/issues",
+    "source": "https://github.com/presprog/contao-resizeonupload"
+  }
 }

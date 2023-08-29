@@ -9,36 +9,38 @@ namespace PresProg\ResizeOnUpload;
 
 use Contao\CoreBundle\Framework\Adapter;
 use Contao\CoreBundle\Framework\ContaoFramework;
-use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
-use Contao\CoreBundle\Image\ImageFactoryInterface;
+use Contao\CoreBundle\Image\LegacyResizer;
 use Contao\CoreBundle\Image\PictureFactoryInterface;
 use Contao\FilesModel;
+use Contao\Image\DeferredImageInterface;
 use Contao\Model\Collection;
 use Contao\StringUtil;
 use Psr\Log\LoggerInterface;
 
-class ImageResizer
+final class ImageResizer
 {
-    private Adapter $filesModel;
-
-    private ImageFactoryInterface $imageFactory;
+    private array $imageSizes = [];
 
     private PictureFactoryInterface $pictureFactory;
 
-    private array $validImageExtensions;
+    private LegacyResizer $resizer;
 
     private LoggerInterface $logger;
 
-    private array $imageSizes = [];
+    private array $validImageExtensions;
 
-    public function __construct(ContaoFramework $framework, ImageFactoryInterface $imageFactory, PictureFactoryInterface $pictureFactory, LoggerInterface $logger, array $validImageExtensions)
+    private string $projectDir;
+
+    private Adapter $filesModel;
+
+    public function __construct(ContaoFramework $framework, PictureFactoryInterface $pictureFactory, LegacyResizer $resizer, LoggerInterface $logger, array $validImageExtensions, string $projectDir)
     {
-
-        $this->imageFactory         = $imageFactory;
         $this->pictureFactory       = $pictureFactory;
+        $this->resizer              = $resizer;
         $this->logger               = $logger;
-        $this->filesModel           = $framework->getAdapter(FilesModel::class);
         $this->validImageExtensions = $validImageExtensions;
+        $this->projectDir           = $projectDir;
+        $this->filesModel           = $framework->getAdapter(FilesModel::class);
     }
 
     /**
@@ -61,8 +63,7 @@ class ImageResizer
 
         foreach ($imageSizes as $size) {
             try {
-                $this->imageFactory->create(TL_ROOT . '/' . $file->path, $size)->getUrl(TL_ROOT);
-                $this->pictureFactory->create(TL_ROOT . '/' . $file->path, $size);
+                $this->executeResize($file, $size);
                 $this->logger->notice('Created thumb (ID ' . $size . ') for image ' . $file->path);
             } catch (\Exception $e) {
                 $this->logger->error('Image "' . $file->path . '" could not be processed: ' . $e->getMessage());
@@ -93,6 +94,25 @@ class ImageResizer
         }
 
         return $sizes;
+    }
+
+
+    private function executeResize(FilesModel $file, $size): void
+    {
+        $picture = $this->pictureFactory->create($this->projectDir . '/' . $file->path, $size);
+
+        $img    = $picture->getRawImg();
+        $srcset = array_map(static function ($img) {
+            return $img[0];
+        }, $img['srcset']);
+
+        foreach ([$img['src'], ...$srcset] as $image) {
+            if (!($image instanceof DeferredImageInterface)) {
+                continue;
+            }
+
+            $this->resizer->resizeDeferredImage($image);
+        }
     }
 
     /**

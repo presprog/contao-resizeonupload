@@ -13,7 +13,7 @@ use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 use PresProg\ResizeOnUpload\ResizeOnUploadBundle;
 
-class Plugin implements BundlePluginInterface
+final class Plugin implements BundlePluginInterface
 {
     /**
      * {@inheritdoc}
