@@ -38,8 +38,8 @@ final class GenerateMissingThumbnailsCommand extends Command
     public function configure(): void
     {
         $this
-            ->setName('thumbs:generate')
-            ->setDescription('Generates missing thumbs, that are in a (sub) folder with pre-defined image sizes.');
+            ->setName('resizeonupload:generate-thumbs')
+            ->setDescription('Generates missing thumbs for folders with defined image sizes');
     }
 
     public function run(InputInterface $input, OutputInterface $output): int
